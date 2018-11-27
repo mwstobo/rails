@@ -7,8 +7,8 @@ services:
 bundler_args: --without test --jobs 3 --retry 3
 before_install:
   - gem install bundler -v=1.11.2
-  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('new_password') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
-  - sudo mysql_upgrade -u root -pnew_password
+  - sudo mysql -e "use mysql; update user set authentication_string='' where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade
   - sudo service mysql restart
 
 before_script:
